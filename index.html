@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONEUP Project - Coming Soon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            font-family: 'Noto Serif JP', 'Georgia', serif;
+            background: linear-gradient(135deg, #fffbf5 0%, #fff8f0 50%, #fffbf5 100%);
+            color: #2c2c2c;
+            line-height: 1.9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 2rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* 背景装飾 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -20%;
+            left: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        /* ページタイトル */
+        .page-title {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            letter-spacing: 3px;
+            font-family: 'Noto Serif JP', serif;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .page-subtitle {
+            font-size: 1.3rem;
+            color: #d4af37;
+            font-weight: 600;
+            letter-spacing: 2px;
+            font-family: 'Noto Serif JP', serif;
+            margin-bottom: 3rem;
+        }
+
+        .title-divider {
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 2rem auto 3rem;
+        }
+
+        /* ヘッダー */
+        .header {
+            margin-bottom: 2rem;
+        }
+
+        /* メインコンテンツ */
+        .main-content {
+            background: #fff;
+            border-radius: 8px;
+            padding: 5rem 4rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid #d4af37;
+        }
+
+        .status-title {
+            font-size: 2.2rem;
+            color: #1a1a1a;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            font-family: 'Noto Serif JP', serif;
+            letter-spacing: 1px;
+        }
+
+        .status-message {
+            font-size: 1.4rem;
+            color: #2c2c2c;
+            line-height: 2.4;
+            font-weight: 400;
+            font-family: 'Noto Serif JP', serif;
+            margin-bottom: 2.5rem;
+        }
+
+        .status-message p {
+            margin-bottom: 1.5rem;
+        }
+
+        .status-message p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-message {
+            font-size: 1.3rem;
+            color: #d4af37;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            font-family: 'Noto Serif JP', serif;
+            letter-spacing: 1px;
+        }
+
+        /* 期待感セクション */
+        .expectation-section {
+            background: linear-gradient(135deg, #fff8f0 0%, #fffbf5 100%);
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            padding: 4rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .expectation-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .expectation-section .inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .expectation-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-family: 'Noto Serif JP', serif;
+            color: #1a1a1a;
+        }
+
+        .expectation-section p {
+            font-size: 1.2rem;
+            line-height: 2.2;
+            color: #2c2c2c;
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .expectation-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .emphasis-text {
+            font-size: 1.4rem;
+            color: #d4af37;
+            font-weight: 700;
+            margin-top: 2.5rem;
+            font-family: 'Noto Serif JP', serif;
+            letter-spacing: 1px;
+        }
+
+        /* アニメーション */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        .pulse {
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .main-content {
+                padding: 3rem 2rem;
+            }
+
+            .status-title {
+                font-size: 1.8rem;
+            }
+
+            .status-message {
+                font-size: 1.2rem;
+            }
+
+            .expectation-section {
+                padding: 3rem 2rem;
+            }
+
+            .expectation-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .expectation-section p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- ページタイトル -->
+        <div class="page-title">ONEUP Project</div>
+        <div class="page-subtitle">Coming Soon</div>
+        <div class="title-divider"></div>
+
+        <!-- ヘッダー -->
+        <div class="header"></div>
+
+        <!-- メインコンテンツ -->
+        <div class="main-content">
+            <div class="status-title">募集状況のご案内</div>
+            <div class="status-message">
+                <p>お申込は、締め切りました。</p>
+                <p>次回募集は、３月頃です。</p>
+                <div class="highlight-message">ぜひ、定期的にこのページをご確認ください。</div>
+            </div>
+        </div>
+
+        <!-- 期待感セクション -->
+        <div class="expectation-section">
+            <div class="inner">
+                <h2>次回の募集をお見逃しなく</h2>
+                <p>ONEUPプロジェクトは、定期的ではありますが、限定的な募集を行っています。</p>
+                <p>プロジェクトの質を保ち、一人ひとりのメンバーに最高水準のサポートを提供するため、募集のタイミングは限られています。</p>
+                <p>次のチャンスを逃さないよう、ぜひ定期的にこのページをご確認いただき、3月の募集開始をお待ちください。</p>
+                <div class="emphasis-text">あなたの次のステップは、もうすぐです。</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
