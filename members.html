@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONEUP Project - 実績紹介</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif JP', 'Georgia', serif;
+            background: linear-gradient(135deg, #f5f1ed 0%, #faf8f5 100%);
+            color: #2c2c2c;
+            line-height: 1.9;
+        }
+
+        /* ===== ナビゲーション ===== */
+        nav {
+            background: #fff;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #d4af37;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #d4af37;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: #2c2c2c;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        nav a:hover {
+            color: #d4af37;
+        }
+
+        /* ===== コンテナ ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ===== ファーストビュー ===== */
+        .hero {
+            text-align: center;
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, #fff9f0 0%, #f5f1ed 100%);
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+            letter-spacing: 2px;
+            font-weight: 700;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 0.8rem;
+            font-weight: 400;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .hero .subtitle {
+            font-size: 1rem;
+            color: #999;
+            margin-top: 2rem;
+            font-style: italic;
+            font-weight: 400;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        /* ===== セクションタイトル ===== */
+        .section-title {
+            font-size: 2.8rem;
+            margin: 5rem 0 3.5rem 0;
+            color: #1a1a1a;
+            text-align: center;
+            position: relative;
+            padding-bottom: 2rem;
+            letter-spacing: 1px;
+            font-weight: 700;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+
+        /* ===== 実績カード（バナー付き） ===== */
+        .featured-members {
+            display: grid;
+            gap: 5rem;
+            margin-bottom: 6rem;
+        }
+
+        .member-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 0;
+            background: transparent;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .member-card.reverse {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .member-card.reverse .member-image {
+            order: 2;
+        }
+
+        .member-card.reverse .member-content {
+            order: 1;
+        }
+
+        .member-image {
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .member-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .member-card:hover .member-image img {
+            transform: scale(1.02);
+        }
+
+        .member-content h3 {
+            font-size: 0.9rem;
+            color: #999;
+            margin-bottom: 0.8rem;
+            font-weight: 400;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .member-content h2 {
+            font-size: 2.2rem;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .member-content .achievement {
+            font-size: 1.3rem;
+            color: #d4af37;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .member-content .description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.9;
+            font-weight: 400;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        /* ===== 成功事例グリッド ===== */
+        .success-stories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 6rem;
+        }
+
+        .story-card {
+            padding: 3rem;
+            background: #fff;
+            border: 1px solid #e8e3dd;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .story-card:hover {
+            background: #fffbf7;
+            border-color: #d4af37;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .story-card h4 {
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 0.8rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .story-card h3 {
+            font-size: 1.6rem;
+            color: #d4af37;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .story-card p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.9;
+            font-weight: 400;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        /* ===== チーム成果セクション ===== */
+        .community-section {
+            padding: 0;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            margin-bottom: 6rem;
+            text-align: center;
+        }
+
+        .community-section h3 {
+            font-size: 2.5rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .community-section > p {
+            font-size: 1.1rem;
+            color: #999;
+            margin-bottom: 3rem;
+            font-weight: 400;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .uplink-banner {
+            margin-bottom: 3rem;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .uplink-banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .community-highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .highlight {
+            padding: 2.5rem;
+            background: #fff;
+            border: 1px solid #e8e3dd;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .highlight:hover {
+            border-color: #d4af37;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.1);
+        }
+
+        .highlight h4 {
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .highlight p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            font-weight: 400;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        /* ===== Coming Soon セクション ===== */
+        .coming-soon {
+            padding: 0;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            margin-bottom: 6rem;
+        }
+
+        .coming-soon h3 {
+            font-size: 2.5rem;
+            color: #1a1a1a;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-align: center;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .coming-soon > p {
+            font-size: 1.1rem;
+            color: #999;
+            margin-bottom: 3rem;
+            font-weight: 400;
+            text-align: center;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        /* ===== Coming Soon メンバーカード ===== */
+        .coming-members {
+            display: grid;
+            gap: 5rem;
+            margin-bottom: 4rem;
+        }
+
+        .coming-member-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 3rem;
+            background: linear-gradient(135deg, #fff9f0 0%, #f5f1ed 100%);
+            border: 2px solid #d4af37;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .coming-member-card:hover {
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .coming-member-card.reverse {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .coming-member-card.reverse .member-image {
+            order: 2;
+        }
+
+        .coming-member-card.reverse .member-content {
+            order: 1;
+        }
+
+        .coming-member-card .member-image {
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .coming-member-card .member-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .coming-member-card:hover .member-image img {
+            transform: scale(1.02);
+        }
+
+        .coming-member-card .member-content h3 {
+            font-size: 0.85rem;
+            color: #d4af37;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .coming-member-card .member-content h2 {
+            font-size: 2.2rem;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .coming-member-card .member-content .achievement {
+            font-size: 1.3rem;
+            color: #d4af37;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .coming-member-card .member-content .description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.9;
+            font-weight: 400;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        /* ===== その他の準備中案件 ===== */
+        .coming-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            padding: 3rem;
+            background: linear-gradient(135deg, #fff9f0 0%, #f5f1ed 100%);
+            border: 2px solid #d4af37;
+            border-radius: 4px;
+        }
+
+        .coming-item {
+            padding: 2.5rem;
+            background: #fff;
+            border: 1px solid #e8e3dd;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .coming-item:hover {
+            border-color: #d4af37;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.1);
+        }
+
+        .coming-item .date {
+            color: #d4af37;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .coming-item h4 {
+            color: #1a1a1a;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .coming-item p {
+            color: #999;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            font-weight: 400;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        /* ===== フッター ===== */
+        footer {
+            background: #1a1a1a;
+            border-top: 2px solid #d4af37;
+            padding: 4rem 0;
+            text-align: center;
+            color: #999;
+            margin-top: 6rem;
+        }
+
+        footer p {
+            margin-bottom: 0.8rem;
+            font-weight: 400;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        footer .copyright {
+            font-size: 0.85rem;
+            margin-top: 2rem;
+            color: #666;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        /* ===== レスポンシブ ===== */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin: 3rem 0 2.5rem 0;
+            }
+
+            .member-card,
+            .coming-member-card {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .member-card.reverse,
+            .coming-member-card.reverse {
+                grid-template-columns: 1fr;
+            }
+
+            .member-card.reverse .member-image,
+            .coming-member-card.reverse .member-image {
+                order: 1;
+            }
+
+            .member-card.reverse .member-content,
+            .coming-member-card.reverse .member-content {
+                order: 2;
+            }
+
+            .member-content h2,
+            .coming-member-card .member-content h2 {
+                font-size: 1.6rem;
+            }
+
+            .member-content .achievement,
+            .coming-member-card .member-content .achievement {
+                font-size: 1.1rem;
+            }
+
+            .success-stories {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .community-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .coming-items {
+                grid-template-columns: 1fr;
+            }
+
+            nav .container {
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+            .community-section,
+            .coming-soon {
+                padding: 0;
+            }
+
+            .coming-member-card {
+                padding: 2rem;
+            }
+
+            .coming-items {
+                padding: 2rem;
+            }
+
+            .story-card {
+                padding: 2rem;
+            }
+
+            .highlight {
+                padding: 1.5rem;
+            }
+
+            .coming-item {
+                padding: 1.5rem;
+            }
+        }
+
+        /* ===== スクロールアニメーション ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- ナビゲーション -->
+    <nav>
+        <div class="container">
+            <div class="logo">ONEUP</div>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="members.html">実績</a></li>
+                <li><a href="index.html">お申込</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ファーストビュー -->
+    <section class="hero">
+        <div class="container">
+            <h1>ここに、未来のあなたがいる。</h1>
+            <p>ビジネスの常識を覆し、まだ見ぬ頂へ。</p>
+            <p class="subtitle">ONEUPプロジェクトが生み出した、輝かしい成果の一部をご紹介します。</p>
+        </div>
+    </section>
+
+    <!-- メインコンテンツ -->
+    <main>
+        <div class="container">
+            <!-- 実績紹介セクション -->
+            <section id="featured">
+                <h2 class="section-title">Featured Members</h2>
+                
+                <div class="featured-members">
+                    <!-- 1. みづきち -->
+                    <div class="member-card fade-in">
+                        <div class="member-image">
+                            <img src="images/1.jpg" alt="みづきち">
+                        </div>
+                        <div class="member-content">
+                            <h3>WEB & グラフィックデザイナー</h3>
+                            <h2>みづきち</h2>
+                            <div class="achievement">脅威の100%成約</div>
+                            <p class="description">年商8桁の起業家から絶大な信頼を得るトップデザイナー。主婦を収益化デザイナーへと育成し、圧倒的な成果を上げています。</p>
+                        </div>
+                    </div>
+
+                    <!-- 2. 大西南帆 -->
+                    <div class="member-card reverse fade-in">
+                        <div class="member-image">
+                            <img src="images/2.jpg" alt="大西南帆">
+                        </div>
+                        <div class="member-content">
+                            <h3>BEYONDERS英会話スクール代表</h3>
+                            <h2>大西 南帆</h2>
+                            <div class="achievement">2ヶ月で売上300万円アップ</div>
+                            <p class="description">芸能人も顧客に抱える人気スクールが、新たなステージへ。月35万円の安定収益モデルを確立しました。</p>
+                        </div>
+                    </div>
+
+                    <!-- 3. まる -->
+                    <div class="member-card fade-in">
+                        <div class="member-image">
+                            <img src="images/3.jpg" alt="まる">
+                        </div>
+                        <div class="member-content">
+                            <h3>戦略の女神 / 起業家のマーケティング伴走</h3>
+                            <h2>まる</h2>
+                            <div class="achievement">過去最高月商500万円達成</div>
+                            <p class="description">卓越したマーケティングスキルを持つ彼女が、事業を再構築。単一のサービスに依存しない、強固なポートフォリオを築き上げました。</p>
+                        </div>
+                    </div>
+
+                    <!-- 4. 白神せんせい -->
+                    <div class="member-card reverse fade-in">
+                        <div class="member-image">
+                            <img src="images/4.jpg" alt="白神せんせい">
+                        </div>
+                        <div class="member-content">
+                            <h3>「一生健康習慣」 あなたの健康食を歯科医が処方</h3>
+                            <h2>白神 せんせい</h2>
+                            <div class="achievement">1週間で110人集客、1ヶ月で800人</div>
+                            <p class="description">歯科医という専門性を活かしたビジネスモデルで、驚異的な集客を実現。モニター30人申込の実績を達成しました。</p>
+                        </div>
+                    </div>
+
+                    <!-- 5. あいら -->
+                    <div class="member-card fade-in">
+                        <div class="member-image">
+                            <img src="images/5.jpg" alt="あいら">
+                        </div>
+                        <div class="member-content">
+                            <h3>食習慣改善アドバイザー / 美肌を叶える予防医学の食事</h3>
+                            <h2>あいら</h2>
+                            <div class="achievement">副業でゼロから60万円達成</div>
+                            <p class="description">OLから起業家へ。オンライン起業の道を切り開き、本業との両立を実現しながら確実な収益を構築しました。</p>
+                        </div>
+                    </div>
+
+                    <!-- 6. まゆっち -->
+                    <div class="member-card reverse fade-in">
+                        <div class="member-image">
+                            <img src="images/6.jpg" alt="まゆっち">
+                        </div>
+                        <div class="member-content">
+                            <h3>天然石ジュエリーSURUS オーナー</h3>
+                            <h2>まゆっち</h2>
+                            <div class="achievement">「好き」を形に</div>
+                            <p class="description">専業主婦14年から転身。自分の「好き」を事業化し、ブレスレット店オーナーとして新たな人生をスタートさせました。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 成功事例セクション -->
+            <section>
+                <h2 class="section-title">Success Stories</h2>
+                
+                <div class="success-stories">
+                    <div class="story-card fade-in">
+                        <h4>年商24億の経営コンサル</h4>
+                        <h3>Mirei</h3>
+                        <p>ヒーラーとしての活動から、主婦が年商1億円を達成。現在は「億女製造コンサル」として活躍しています。</p>
+                    </div>
+
+                    <div class="story-card fade-in">
+                        <h4>世界観デザイナー兼コンサルタント</h4>
+                        <h3>mii</h3>
+                        <p>市長出席の講座開催を実現。「信頼」が人を呼ぶ独自の世界観を構築し、ビジネスを展開しています。</p>
+                    </div>
+
+                    <div class="story-card fade-in">
+                        <h4>パース在住パーソナルトレーナー</h4>
+                        <h3>Maiko</h3>
+                        <p>世界大会出場のアスリートを指導。副業でも安定した売上を実現しています。</p>
+                    </div>
+
+                    <div class="story-card fade-in">
+                        <h4>予約のとれないオンライン秘書</h4>
+                        <h3>ナディ</h3>
+                        <p>依頼殺到の人気秘書へ。顔出しなしで月収30万円の安定モデルを確立しました。</p>
+                    </div>
+
+                    <div class="story-card fade-in">
+                        <h4>AI×自動化×仕込み戦略の専門家</h4>
+                        <h3>かな</h3>
+                        <p>わずか200人のフォロワーで売上160万円を達成。仕組み化の力を実証しています。</p>
+                    </div>
+
+                    <div class="story-card fade-in">
+                        <h4>マーケティング動画作成</h4>
+                        <h3>トロントかおりん</h3>
+                        <p>ゼロイチから20万円の安定収益を実現。初心者から才能を発掘するコンサルも展開しています。</p>
+                    </div>
+
+                    <div class="story-card fade-in">
+                        <h4>アメリカ最先端、更年期セラピスト26年</h4>
+                        <h3>Mimi Miks</h3>
+                        <p>ゼロからスレッズ集客で「売れる」動線を完成。長年の経験を新しい時代に活かしています。</p>
+                    </div>
+
+                    <div class="story-card fade-in">
+                        <h4>写真家、着物アーティスト</h4>
+                        <h3>なおまりあ</h3>
+                        <p>自分迷子から卒業。ゼロイチから30万円達成、インスタ構築コンサルで満足度100%を実現。</p>
+                    </div>
+
+                    <div class="story-card fade-in">
+                        <h4>思考タスクを整える</h4>
+                        <h3>Hiro</h3>
+                        <p>法人個人クライアント多数。大手企業のサポートをしながら、Notionで講座生を獲得しています。</p>
+                    </div>
+
+                    <div class="story-card fade-in">
+                        <h4>短期収益、億以上！</h4>
+                        <h3>3店舗経営 小川 葵</h3>
+                        <p>絶賛継続中。短期での大型案件獲得を実現しています。</p>
+                    </div>
+
+                    <div class="story-card fade-in">
+                        <h4>海外不動産経営、美ウォーキング講座主宰</h4>
+                        <h3>ニュージーゆきの</h3>
+                        <p>年商1億円達成。複数の事業を展開し、グローバルな視点でビジネスを構築しています。</p>
+                    </div>
+
+                    <div class="story-card fade-in">
+                        <h4>世界を旅する！マイルインストラクター、スピリチュアルアーティスト</h4>
+                        <h3>さとみん</h3>
+                        <p>最高年収1300万円を達成。自由なライフスタイルを実現しながら、高い収入を得ています。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- チーム成果セクション -->
+            <section id="community" class="community-section">
+                <h3>Community & Achievements</h3>
+                <p>個の力を、集合知へ。</p>
+                
+                <div class="uplink-banner">
+                    <img src="images/10.jpg" alt="UPLINK - 8人の実業家による次世代ハイブリッド経営プラットフォーム">
+                </div>
+
+                <div class="community-highlights">
+                    <div class="highlight">
+                        <h4>UPLINK</h4>
+                        <p>8人の実業家による次世代ハイブリッド経営プラットフォーム。ローンチイベントで200人以上を集客しました。</p>
+                    </div>
+
+                    <div class="highlight">
+                        <h4>収益強化グループ</h4>
+                        <p>メンバー同士のジョイントベンチャーやアフィリエイトが活発化。互いのビジネスを加速させるエコシステムです。</p>
+                    </div>
+
+                    <div class="highlight">
+                        <h4>専門分野別グループ</h4>
+                        <p>スレッズ強化、コンテンツホルダー育成など、目的別のグループ活動を通じて実践的なスキルアップを実現。</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Coming Soon セクション -->
+            <section id="coming" class="coming-soon">
+                <h3>Next Breakthrough</h3>
+                <p>ONEUPプロジェクトの進化は止まらない。</p>
+                
+                <!-- Coming Soon メンバー（バナー付き） -->
+                <div class="coming-members">
+                    <!-- 7. 大平武志 -->
+                    <div class="coming-member-card fade-in">
+                        <div class="member-image">
+                            <img src="images/7.jpg" alt="大平武志">
+                        </div>
+                        <div class="member-content">
+                            <h3>Coming Soon</h3>
+                            <h2>大平 武志</h2>
+                            <div class="achievement">エステサロンオーナー / Hueee株式会社 代表</div>
+                            <p class="description">エステサロン都内数店舗経営からFC展開へ。実店舗での成功を基盤に、新たなビジネスモデルの構築を進めています。</p>
+                        </div>
+                    </div>
+
+                    <!-- 8. 奥村真弓 -->
+                    <div class="coming-member-card reverse fade-in">
+                        <div class="member-image">
+                            <img src="images/8.jpg" alt="奥村真弓">
+                        </div>
+                        <div class="member-content">
+                            <h3>Coming Soon</h3>
+                            <h2>奥村 真弓</h2>
+                            <div class="achievement">株式会社M.prorise代表取締役 / 国内外5店舗ネイルサロン経営</div>
+                            <p class="description">実店舗の成功から、オンラインサロン展開へ。新たなビジネスモデルの構築を進め、グローバルな視点でビジネスを展開しています。</p>
+                        </div>
+                    </div>
+
+                    <!-- 9. 高橋雅英 -->
+                    <div class="coming-member-card fade-in">
+                        <div class="member-image">
+                            <img src="images/9.jpg" alt="高橋雅英">
+                        </div>
+                        <div class="member-content">
+                            <h3>Coming Soon</h3>
+                            <h2>高橋 雅英</h2>
+                            <div class="achievement">整体院トゥルース 院長 / 肩こり頭痛改善専門</div>
+                            <p class="description">複数の事業を同時に展開し、オンライン整体講座を立ち上げ。実践的なスキルを世界に発信するプラットフォームを構築しています。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- その他の準備中案件 -->
+                <div class="coming-items">
+                    <div class="coming-item">
+                        <div class="date">準備中</div>
+                        <h4>幹細胞AGF施術</h4>
+                        <p>最先端の美容技術を活用した新しいビジネスモデルの構築</p>
+                    </div>
+
+                    <div class="coming-item">
+                        <div class="date">準備中</div>
+                        <h4>インフルエンサー マッチング</h4>
+                        <p>ブランドとインフルエンサーを繋ぐ新たなプラットフォーム</p>
+                    </div>
+
+                    <div class="coming-item">
+                        <div class="date">準備中</div>
+                        <h4>足ツボ教育</h4>
+                        <p>伝統的な技術を現代のビジネスに融合させた新展開</p>
+                    </div>
+
+                    <div class="coming-item">
+                        <div class="date">準備中</div>
+                        <h4>伴奏サポート</h4>
+                        <p>起業家の成長を支援する新たなコンサルティングサービス</p>
+                    </div>
+
+                    <div class="coming-item">
+                        <div class="date">準備中</div>
+                        <h4>スレッズ集客案</h4>
+                        <p>最新のSNS戦略を活用した効果的な集客方法の提案</p>
+                    </div>
+
+                    <div class="coming-item">
+                        <div class="date">準備中</div>
+                        <h4>アフィリエイト トライ</h4>
+                        <p>メンバー同士の協力による新たな収益モデルの構築</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <p>ONEUPプロジェクト - 実績紹介ページ</p>
+            <p>ビジネスの常識を覆し、まだ見ぬ頂へ。</p>
+            <div class="copyright">
+                <p>&copy; 2026 ONEUP Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // スクロールアニメーション
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.member-card, .story-card, .coming-member-card, .coming-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

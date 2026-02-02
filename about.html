@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About ONEUP - ONEUPプロジェクト</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Serif JP', 'Georgia', serif;
+            background: linear-gradient(135deg, #f5f1ed 0%, #faf8f5 100%);
+            color: #2c2c2c;
+            line-height: 1.9;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ===== ナビゲーション ===== */
+        nav {
+            background: #fff;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #d4af37;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #d4af37;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-family: 'Noto Serif JP', serif;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        nav a.logo:hover {
+            opacity: 0.8;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: #2c2c2c;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        nav a:hover {
+            color: #d4af37;
+        }
+
+        /* ===== コンテナ ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ===== メインコンテンツ ===== */
+        main {
+            flex: 1;
+            padding: 0;
+        }
+
+        /* ===== ヒーロー セクション ===== */
+        .hero-section {
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            color: #fff;
+            padding: 8rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            line-height: 1.4;
+            letter-spacing: 2px;
+            font-family: 'Noto Serif JP', serif;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .hero-section .tagline {
+            font-size: 1.3rem;
+            color: #d4af37;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-family: 'Noto Serif JP', serif;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .hero-section .divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 2rem auto;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+
+        .hero-section p {
+            font-size: 1.1rem;
+            line-height: 2;
+            max-width: 900px;
+            margin: 0 auto 3rem;
+            color: #e0e0e0;
+            font-weight: 400;
+            font-family: 'Noto Serif JP', serif;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+
+        /* ===== コンテンツセクション ===== */
+        .content-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #f5f1ed 0%, #faf8f5 100%);
+        }
+
+        .content-section .container {
+            max-width: 1000px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            color: #d4af37;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-family: 'Noto Serif JP', serif;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #1a1a1a;
+            margin-bottom: 2.5rem;
+            font-weight: 600;
+            line-height: 1.8;
+            font-family: 'Noto Serif JP', serif;
+            animation: fadeInUp 0.8s ease-out 0.1s both;
+        }
+
+        .section-description {
+            font-size: 1rem;
+            color: #666;
+            line-height: 2;
+            margin-bottom: 3rem;
+            font-weight: 400;
+            font-family: 'Noto Serif JP', serif;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        .section-description p {
+            margin-bottom: 1.5rem;
+        }
+
+        .section-description p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ===== 4つの柱セクション ===== */
+        .pillars-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #faf8f5 0%, #f5f1ed 100%);
+        }
+
+        .pillars-section .container {
+            max-width: 1200px;
+        }
+
+        .pillars-title {
+            font-size: 2.2rem;
+            color: #d4af37;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-align: center;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .pillars-divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 2rem auto 3rem;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .pillar-card {
+            background: #fff;
+            border: 2px solid #d4af37;
+            border-radius: 4px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .pillar-card:nth-child(1) { animation-delay: 0s; }
+        .pillar-card:nth-child(2) { animation-delay: 0.1s; }
+        .pillar-card:nth-child(3) { animation-delay: 0.2s; }
+        .pillar-card:nth-child(4) { animation-delay: 0.3s; }
+
+        .pillar-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.2);
+        }
+
+        .pillar-number {
+            font-size: 3rem;
+            color: #d4af37;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .pillar-title {
+            font-size: 1.4rem;
+            color: #1a1a1a;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            line-height: 1.6;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .pillar-subtitle {
+            font-size: 0.95rem;
+            color: #d4af37;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .pillar-description {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.9;
+            font-weight: 400;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .pillar-description p {
+            margin-bottom: 1rem;
+        }
+
+        .pillar-description p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* ===== CTA セクション ===== */
+        .cta-section {
+            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            color: #fff;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 80% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .cta-section .container {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .cta-section p {
+            font-size: 1rem;
+            line-height: 1.9;
+            margin-bottom: 2.5rem;
+            color: #e0e0e0;
+            font-weight: 400;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #d4af37, #e8c547);
+            color: #fff;
+            padding: 1.2rem 3rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            letter-spacing: 1px;
+            font-family: 'Noto Serif JP', serif;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* ===== フッター ===== */
+        footer {
+            background: #1a1a1a;
+            border-top: 2px solid #d4af37;
+            padding: 4rem 0;
+            text-align: center;
+            color: #999;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin-bottom: 0.8rem;
+            font-weight: 400;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        footer .copyright {
+            font-size: 0.85rem;
+            margin-top: 2rem;
+            color: #666;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        /* ===== アニメーション ===== */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== レスポンシブ ===== */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            nav .container {
+                padding: 0 1rem;
+            }
+
+            .hero-section {
+                padding: 4rem 1rem;
+            }
+
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .hero-section .tagline {
+                font-size: 1rem;
+            }
+
+            .hero-section p {
+                font-size: 0.95rem;
+            }
+
+            .content-section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            .pillars-section {
+                padding: 3rem 1rem;
+            }
+
+            .pillars-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .pillar-card {
+                padding: 2rem;
+            }
+
+            .pillar-title {
+                font-size: 1.2rem;
+            }
+
+            .cta-section {
+                padding: 3rem 1rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 0.95rem;
+            }
+
+            footer {
+                padding: 2rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ナビゲーション -->
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">ONEUP</a>
+            <ul>
+                <li><a href="about.html">About</a></li>
+                <li><a href="members.html">実績</a></li>
+                <li><a href="index.html">お申込</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- メインコンテンツ -->
+    <main>
+        <!-- ヒーロー セクション -->
+        <section class="hero-section">
+            <div class="container">
+                <h1>あなたのビジネスを、未踏の頂へ誘う覚醒の場所</h1>
+                <div class="tagline">ビジネスの常識を打ち破り、想像を遥かに超える未来を掴む</div>
+                <div class="divider"></div>
+                <p>ONEUPプロジェクトは、単なる学びの場ではありません。それは、あなたの内に秘められた無限の可能性を解き放ち、世界を舞台に活躍する次世代のリーダーへと覚醒させる、唯一無二のプラットフォームです。ビジネス初心者から、既に数億円規模の実績を持つ実業家まで、あなたの「今」を起点に、圧倒的なステージアップを約束します。</p>
+            </div>
+        </section>
+
+        <!-- コンセプト説明セクション -->
+        <section class="content-section">
+            <div class="container">
+                <h2 class="section-title">ONEUPプロジェクトとは</h2>
+                <p class="section-description">
+                    ONEUPプロジェクトは、ビジネスの本質を追求し、世界で通用する実業家を育成する、最高峰のプラットフォームです。小手先のテクニックではなく、普遍的な原理原則に基づいた、真のビジネス教育と実践の場を提供します。
+                </p>
+            </div>
+        </section>
+
+        <!-- 4つの柱セクション -->
+        <section class="pillars-section">
+            <div class="container">
+                <h2 class="pillars-title">4つの覚醒ステージ</h2>
+                <div class="pillars-divider"></div>
+
+                <div class="pillars-grid">
+                    <!-- UNIVERSITY -->
+                    <div class="pillar-card">
+                        <div class="pillar-number">❶</div>
+                        <h3 class="pillar-title">UNIVERSITY</h3>
+                        <p class="pillar-subtitle">知の覚醒：ビジネスの根源を掴む</p>
+                        <div class="pillar-description">
+                            <p>小手先のテクニックは、一時の成功しか生み出しません。真に長く、そして世界で通用するビジネスを築くためには、その本質、そして人としての「在り方」という原理原則を深く理解することが不可欠です。</p>
+                            <p>ONEUP UNIVERSITYでは、長きにわたり世界のビジネスシーンを牽引してきたMIEの、生きた知見と哲学を余すことなく伝授します。ここでしか得られない、普遍的なビジネスの真理が、あなたの思考を根底から変革し、揺るぎない成功基盤を構築します。</p>
+                        </div>
+                    </div>
+
+                    <!-- RISE -->
+                    <div class="pillar-card">
+                        <div class="pillar-number">❷</div>
+                        <h3 class="pillar-title">RISE</h3>
+                        <p class="pillar-subtitle">共鳴の覚醒：志高き仲間と高め合う</p>
+                        <div class="pillar-description">
+                            <p>一人で挑むビジネスの道は、時に孤独で険しいものです。しかし、志を同じくする仲間がいれば、どんな困難も乗り越え、想像以上のスピードで成長できることを、あなたは知っていますか？</p>
+                            <p>ONEUP RISEは、世界中から集結したビジネスを志す仲間たちが、互いに刺激し、高め合う「共鳴のコミュニティ」です。ゼロからの挑戦も、ここでは「軽々と」実現できる。なぜなら、ここには「あなた」を信じ、共に歩む仲間がいるからです。</p>
+                        </div>
+                    </div>
+
+                    <!-- BUSINESS -->
+                    <div class="pillar-card">
+                        <div class="pillar-number">❸</div>
+                        <h3 class="pillar-title">BUSINESS</h3>
+                        <p class="pillar-subtitle">飛躍の覚醒：売上を爆発的に加速させる</p>
+                        <div class="pillar-description">
+                            <p>年商7桁から8桁への飛躍は、MIEの緻密な戦略と、あなたの情熱が融合した時に生まれる、必然の成果です。</p>
+                            <p>ONEUP BUSINESSでは、連続起業家MIEによる個別コンサルティングを通じて、あなたのビジネスモデルを徹底的に分析し、売上・集客の劇的な向上、そして事業の圧倒的なスケールアップを、あなたが想像もしなかった「スピード感」で実現します。</p>
+                        </div>
+                    </div>
+
+                    <!-- EXECUTIVE -->
+                    <div class="pillar-card">
+                        <div class="pillar-number">❹</div>
+                        <h3 class="pillar-title">EXECUTIVE</h3>
+                        <p class="pillar-subtitle">創造の覚醒：世界を動かす舞台へ</p>
+                        <div class="pillar-description">
+                            <p>選ばれし者だけが足を踏み入れることを許される、究極のビジネスステージ。</p>
+                            <p>ONEUP EXECUTIVEは、世界中に張り巡らされたMIEの強固な人脈を最大限に活用し、数億円規模のジョイントベンチャーを次々と生み出す、まさに「創造の覚醒」の場です。世界を動かすビジネスを共に創造し、歴史に名を刻む。その高みへ、今、あなたを誘います。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA セクション -->
+        <section class="cta-section">
+            <div class="container">
+                <h2>あなたの覚醒は、今ここから始まる</h2>
+                <p>ONEUPプロジェクトへの参加を通じて、あなたが秘めた無限の可能性を解き放ち、世界を舞台に活躍する実業家へと進化してください。</p>
+                <a href="apply.html" class="cta-button">募集情報を確認する</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <p>ONEUPプロジェクト - About</p>
+            <p>あなたのビジネスを、未踏の頂へ</p>
+            <div class="copyright">
+                <p>&copy; 2026 ONEUP Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
